@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <!--
+      This demo shows how to create a single page application (SPA)
+      using angular.js v1.6.3 routing in a single page application
+      without a server.
+
+      Everything works just like the standard demos except
+      for two things:
+
+        1. You need to use the ! in the hrefs.
+        2. You need to put the HTML templates in this file
+           to avoid AJAX requests.
+
+      It also demonstrates my lame implementation of a very
+      simple horizontal navbar.
+    -->
+  <head>
+    <meta charset="utf-8" />
+    <title>Ng Routing Demo</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
+    <script type="text/javascript" src="angular-sanitize.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav ng-controller="navCtrl">
+        <!-- The ! is required as of angular-1.6.3. -->
+        <a href="#!/home"    id="home-tab"    class="navtab-inactive" ng-click="activate($event)">Home</a>
+        <a href="#!/about"   id="about-tab"   class="navtab-inactive" ng-click="activate($event)">About</a>
+        <a href="#!/contact" id="contact-tab" class="navtab-inactive" ng-click="activate($event)">Contact</a>
+      </nav>
+    </header>
+    
+    <!-- Let the templates and controllers do everything. -->
+    <ng-view></ng-view>
+
+    <!--
+        Define the HTML files in-line here.
+
+        This avoids the Cross Origin Resource String (CORS) errors that
+        occur when accessing this installation using file://.
+      -->
+    
+    <!-- id must match templateUrl in $routeProvider. -->
+    <script type="text/ng-template" id="templates/welcome.html">
+      <div id="welcome_page">
+        <h2>Welcome</h2>
+        <p>
+          This demo shows how to create a single page application
+          (SPA) using angularjs 1.6.3 <i>without</i> a webserver. You
+          can access it in your browser by navigating to:
+          <b><code>{{ url }}</code></b>.
+        </p>
+        <p>
+          To avoid CORS (Cross Origin Resource String) erros from the
+          browser, it embeds the HTML for the separate pages in the
+          index.html file.
+        </p>
+        <p>
+          Click on any of the above navigation entries to see
+          the different logical pages.
+        </p>
+        <p>
+          This demo requires HTML5 and angularjs 1.6.3. It has been tested
+          on the following browsers.
+          <ol>
+            <li>Chrome:  56.0.2924.87 (64-bit)</li>
+            <li>Firefox:  52.0.2 (64-bit)</li>
+            <li>Safari:   10.1 (12603.1.30.0.34)</li>
+          </ol>
+        </p>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="templates/home.html">
+      <div id="home_page">
+        <h2>Home</h2>
+        <p>
+          {{ message }}
+        </p>
+        <p>
+          If you really loved the welcome page, click <a href="#!/">here</a>.
+        </p>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="templates/about.html">
+      <div id="about_page">
+        <h2>About</h2>
+        <!-- Note: to inject HTML, you must have the $sanitize service avalable. -->
+        <p ng-bind-html="message"></p>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="templates/contact.html">
+      <div id="contact_page">
+        <h2>Contact</h2>
+        <!-- Note: to inject HTML, you must have the $sanitize service avalable. -->
+        <p ng-bind-html="message"></p>
+      </div>
+    </script>
+
+    <!-- Include our site specific code. -->
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
+<!-- Copyright (c) 2017 by Joe Linoff -->
+<!-- License: MIT Open Source -->

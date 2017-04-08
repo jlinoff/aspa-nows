@@ -1,0 +1,44 @@
+/*
+ * Implementation of a very simple horizontal navigation
+ * bar.
+ */
+nav {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #2972b7;
+}
+
+nav a.navtab-inactive {
+    display: inline-block;
+    color: #fff !important;
+    padding: 15px 15px;
+    font-size: 16px;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    font-weight: normal;
+    background-color: #2972b7;
+}
+
+nav a.navtab-active {
+    display: inline-block;
+    color: #fff !important;
+    padding: 15px 15px;
+    font-size: 16px;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    font-weight: normal;
+    background-color: #4c4ea4;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+nav a:active {
+    text-decoration: none;
+}
+
+/*
+  // Copyright (c) 2017 by Joe Linoff
+//    License: MIT Open Source
+ */
