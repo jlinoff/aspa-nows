@@ -1,7 +1,7 @@
 # aspa-nows
-Angularjs 1.6.3 single page application (SPA) that demonstrates routing with no web-server (file://).
+Angularjs 1.6.3 single page, client side only application with routing that does not need a web-server.
 
-The repository name derives from **A**ngular **S**ingle **P**age **A**pplication with **NO** **W**eb-**S**erver.
+The repository name derives from **A**ngular **S**ingle **P**age client side only **A**pplication with **NO** **W**eb-**S**erver.
 
 This code shows how to create a client-side single page application (SPA) using angular.js v1.6.3 routing in a
 single page application without a server. 
