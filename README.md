@@ -1,7 +1,7 @@
 # aspa-nows
 Angularjs 1.6.3 single page application (SPA) that demonstrates routing with no web-server (file://).
 
-The repository name derives from *A*ngular *S*ingle *Page* *A*pplication with *NO* *W*eb-*S*erver.
+The repository name derives from **A**ngular **S**ingle **P**age **A**pplication with **NO** **W**eb-**S**erver.
 
 This code shows how to create a single page application (SPA) using angular.js v1.6.3 routing in a
 single page application without a server. 
@@ -33,3 +33,14 @@ There are 6 files.
 | navbar.css | my lame navbar CSS |
 
 The angular files were obtained directory from the AngularJS project and are not modified.
+
+### Welcome Page
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824323/38fe88c8-1bbe-11e7-97ac-9a18fa24aa69.png">
+
+### Home Page
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824325/3efc05e8-1bbe-11e7-9481-5b5805262474.png">
+
+### Contact Page
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824326/4743265a-1bbe-11e7-81f5-6c790559868f.png">
+
+
