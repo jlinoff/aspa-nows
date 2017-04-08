@@ -3,14 +3,14 @@ Angularjs 1.6.3 single page application (SPA) that demonstrates routing with no 
 
 The repository name derives from **A**ngular **S**ingle **P**age **A**pplication with **NO** **W**eb-**S**erver.
 
-This code shows how to create a single page application (SPA) using angular.js v1.6.3 routing in a
+This code shows how to create a client-side single page application (SPA) using angular.js v1.6.3 routing in a
 single page application without a server. 
 
 I created it because I could not find an example that worked. All of the examples were great if you had
 a webserver (`http://`) but they failed if you tried to access them using `file://`.
 
-Everything works the same as the standard demos except that you need to use `!` in the hrefs (ex. `href="#!/home"`) and you
-need to put the HTML templates ($routeProvider templateUrl references) in the `index.html` file as ng-template scripts
+Everything works the same as the standard demos except that you need to use `!` (see [aa077e8](https://github.com/angular/angular.js/commit/aa077e81129c740041438688dff2e8d20c3d7b52) for details) in the hrefs (ex. `href="#!/home"`) and you
+need to put the HTML templates (`$routeProvider` `templateUrl` references) in the `index.html` file as `ng-template` scripts
 to avoid Cross Origin Resource String (CORS) errors.
 
 Here is the HTML code fragment that shows how to define the links.
