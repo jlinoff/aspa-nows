@@ -7,13 +7,11 @@ This code shows how to create a client-side single page application (SPA) using 
 single page application without a server. 
 
 I created it because I could not find an example that worked. All of the examples were great if you had
-a webserver (`http://`) but they failed if you tried to access them using `file://`.
+a webserver (`http://`) but they failed with Cross Origin Resource String (CORS) errors if you tried to access them using `file://`.
 
-Everything works the same as the standard demos except that you need to use `!` (see [aa077e8](https://github.com/angular/angular.js/commit/aa077e81129c740041438688dff2e8d20c3d7b52) for details) in the hrefs (ex. `href="#!/home"`) and you
-need to put the HTML templates (`$routeProvider` `templateUrl` references) in the `index.html` file as `ng-template` scripts
-to avoid Cross Origin Resource String (CORS) errors.
+There were two key challenges to getting it working: getting the the page `href` references right because of the newly introduced default hash prefix: `!` (see [aa077e8](https://github.com/angular/angular.js/commit/aa077e81129c740041438688dff2e8d20c3d7b52) for details), and embedding the template HTML code into `index.html` as `ng-template` scripts to avoid CORS errors. Once those fixes were made, it worked as expected.
 
-Here is the HTML code fragment that shows how to define the links.
+Here is the HTML code fragment that shows how to define the `href` links.
 
 ```html
 <a href="#!/home"    id="home-tab"    class="navtab-inactive" ng-click="activate($event)">Home</a>
@@ -21,7 +19,7 @@ Here is the HTML code fragment that shows how to define the links.
 <a href="#!/contact" id="contact-tab" class="navtab-inactive" ng-click="activate($event)">Contact</a>
 ```
 
-Here is the HTML code fragment that shows one of the templates. See `index.html` for more details.
+Here is the HTML code fragment that shows how to embed one of the `ng-template` HTML script templates. See `index.html` for more details.
 
 ```html
     <script type="text/ng-template" id="templates/contact.html">
@@ -33,7 +31,7 @@ Here is the HTML code fragment that shows one of the templates. See `index.html`
     </script>
 ```
 
-Here is the javascript code fragment that shows the `$routeProvider`. See `apps.js` for more details.
+Here is the javascript code fragment that shows the `$routeProvider`. It is a standard implementation . See `apps.js` for more details.
 
 ```javascript
 // Define the router.
