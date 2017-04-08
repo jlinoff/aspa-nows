@@ -21,7 +21,7 @@ Here is the HTML code fragment that shows how to define the links.
 <a href="#!/contact" id="contact-tab" class="navtab-inactive" ng-click="activate($event)">Contact</a>
 ```
 
-Here is the HTML code fragment that shows one of the templates. See index.html for more details.
+Here is the HTML code fragment that shows one of the templates. See `index.html` for more details.
 
 ```html
     <script type="text/ng-template" id="templates/contact.html">
@@ -33,7 +33,7 @@ Here is the HTML code fragment that shows one of the templates. See index.html f
     </script>
 ```
 
-Here is the javascript code fragment that shows the `$routeProvider`.
+Here is the javascript code fragment that shows the `$routeProvider`. See `apps.js` for more details.
 
 ```javascript
 // Define the router.
