@@ -98,6 +98,14 @@ There are 6 files.
 
 The angular files were obtained directory from the AngularJS project and are not modified.
 
+This project has been tested successfully on the following browsers. It will definitely **not** work on old browers because it requires HTML5.
+
+| Browser | Version |
+| ------- | ------- |
+| Chrome  | 56.0.2924.87 (64-bit) |
+| Firefox | 52.0.2 (64-bit) |
+| Safari  | 12603.1.30.0.34 |
+
 ### Welcome Page - file:///Users/jlinoff/work/aspa-nows/index.html
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829591/ac6bdcdc-1c29-11e7-9651-c7df1a606b7f.png">
 
