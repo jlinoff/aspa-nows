@@ -80,13 +80,8 @@ myApp.controller('aboutCtrl', function($scope) {
     // Note: to inject HTML, you must have the $sanitize service
     // avalable.
     var dts = Date();
-    $scope.message = `<p>
-It's about time <b><code>" + dts.toString() + "</code></b>.
-</p>
-<p>
-Version: 0.0.1
-</p>
-`;
+    var now = dts.toString();
+    $scope.message = "<p>It's about time <b><code>" + now + '</code></b>.</p><p>Version: 0.0.1</p>';
 });
 
 myApp.controller('contactCtrl', function($scope) {
