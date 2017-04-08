@@ -9,9 +9,64 @@ single page application without a server.
 I created it because I could not find an example that worked. All of the examples were great if you had
 a webserver (`http://`) but they failed if you tried to access them using `file://`.
 
-Everything works the same as the standard demos except that you need to use `!` in the hrefs and you
-need to put the HTML templates ($routeProvider templateUrl references) in the `index.html` file
+Everything works the same as the standard demos except that you need to use `!` in the hrefs (ex. `href="#!/home"`) and you
+need to put the HTML templates ($routeProvider templateUrl references) in the `index.html` file as ng-template scripts
 to avoid Cross Origin Resource String (CORS) errors.
+
+Here is the HTML code fragment that shows how to define the links.
+
+```html
+<a href="#!/home"    id="home-tab"    class="navtab-inactive" ng-click="activate($event)">Home</a>
+<a href="#!/about"   id="about-tab"   class="navtab-inactive" ng-click="activate($event)">About</a>
+<a href="#!/contact" id="contact-tab" class="navtab-inactive" ng-click="activate($event)">Contact</a>
+```
+
+Here is the HTML code fragment that shows one of the templates. See index.html for more details.
+
+```html
+    <script type="text/ng-template" id="templates/contact.html">
+      <div id="contact_page">
+        <h2>Contact</h2>
+        <!-- Note: to inject HTML, you must have the $sanitize service avalable. -->
+        <p ng-bind-html="message"></p>
+      </div>
+    </script>
+```
+
+Here is the javascript code fragment that shows the `$routeProvider`.
+
+```javascript
+// Define the router.
+myApp.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/welcome.html',
+            controller  : 'welcomeCtrl'
+        })
+        .when('/home', { // Note that the href is "#!/home"
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/home.html',
+            controller  : 'homeCtrl'
+        })
+        .when('/about', { // Note that the href is "#!/about"
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/about.html',
+            controller  : 'aboutCtrl'
+        })
+        .when('/contact', { // Note that the href is "#!/contact"
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/contact.html',
+            controller  : 'contactCtrl'
+        })
+        .otherwise({
+            // This is not a real file when no web-server is present.
+            // Tell them that the page is not valid.
+            templateUrl : 'templates/x404.html',
+            controller  : 'x404Ctrl'
+        });
+});
+```
 
 To try it out do this:
 
@@ -20,6 +75,17 @@ $ git clone https://github.com/jlinoff/aspa-nows.git
 $ cd aspa-nows
 $ firefox file://$(pwd)
 ```
+
+You can also server the pages using a web server as follows:
+
+```bash
+$ python -m SimpleHTTPServer 8000 &
+$ firefox http://localhost:8000
+```
+
+Please note that this is not a good approach to use for general applications that use servers because
+you cannot organize your template files. It is only useful for cases where no server is available. Perhaps
+where you want to provide HTML5 based help on a USB.
 
 There are 6 files.
 
@@ -34,13 +100,18 @@ There are 6 files.
 
 The angular files were obtained directory from the AngularJS project and are not modified.
 
-### Welcome Page
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824323/38fe88c8-1bbe-11e7-97ac-9a18fa24aa69.png">
+### Welcome Page - file:///Users/jlinoff/work/aspa-nows/index.html
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829591/ac6bdcdc-1c29-11e7-9651-c7df1a606b7f.png">
 
-### Home Page
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824325/3efc05e8-1bbe-11e7-9481-5b5805262474.png">
+### Welcome Page - http://localhost:8000
+This example shows the page with a server: `python -m SimpleHTTPServer 8000`.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829603/c4ca7cd4-1c29-11e7-9ff1-f212204286c6.png">
 
-### Contact Page
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24824326/4743265a-1bbe-11e7-81f5-6c790559868f.png">
+### Home Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/home
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829592/b2ad1782-1c29-11e7-9376-d83346ac3046.png">
 
+### About Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/about
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829594/b694464a-1c29-11e7-94f8-854ddc1dbebc.png">
 
+### Contact Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/contact
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829600/ba6cc7ba-1c29-11e7-9082-e70a1e3609de.png">
