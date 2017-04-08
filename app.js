@@ -52,7 +52,10 @@ myApp.config(function($routeProvider) {
             controller  : 'contactCtrl'
         })
         .otherwise({
-            redirectTo: '/home'
+            // This is not a real file when no web-server is present.
+            // Tell them that the page is not valid.
+            templateUrl : 'templates/x404.html',
+            controller  : 'x404Ctrl'
         });
 });
 
@@ -97,4 +100,17 @@ myApp.controller('contactCtrl', function($scope) {
     Email    : <a href="mailto:bigbob@example.com">bigbob@example.com</a>
     Website  : <a href="https://example.com">https://example.com</a>
 </pre>`;
+});
+
+myApp.controller('x404Ctrl', function($scope) {
+    var navItems = document.getElementsByClassName('navtab-active');
+    for (let i=0; i<navItems.length; i++) {
+        let elem = navItems[i];
+        elem.classList.remove('navtab-active');
+        elem.classList.add('navtab-inactive');
+    }
+    $scope.url = window.location.href;
+    if ($scope.url.endsWith('#!/')) {
+        $scope.url = $scope.url.slice(0, $scope.url.length - 3);
+    }
 });
