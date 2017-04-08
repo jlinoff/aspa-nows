@@ -14,9 +14,9 @@ There were two key challenges to getting it working: getting the the page `href`
 Here is the HTML code fragment that shows how to define the `href` links.
 
 ```html
-<a href="#!/home"    id="home-tab"    class="navtab-inactive" ng-click="activate($event)">Home</a>
-<a href="#!/about"   id="about-tab"   class="navtab-inactive" ng-click="activate($event)">About</a>
-<a href="#!/contact" id="contact-tab" class="navtab-inactive" ng-click="activate($event)">Contact</a>
+<a href="#!/home"    class="navtab-inactive" ng-click="activate($event)">Home</a>
+<a href="#!/about"   class="navtab-inactive" ng-click="activate($event)">About</a>
+<a href="#!/contact" class="navtab-inactive" ng-click="activate($event)">Contact</a>
 ```
 
 Here is the HTML code fragment that shows how to embed one of the `ng-template` HTML script templates. See `index.html` for more details.
