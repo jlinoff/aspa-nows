@@ -111,7 +111,7 @@ This example shows the page with a server: `python -m SimpleHTTPServer 8000`.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829592/b2ad1782-1c29-11e7-9376-d83346ac3046.png">
 
 ### About Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/about
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829594/b694464a-1c29-11e7-94f8-854ddc1dbebc.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829760/d06743da-1c2c-11e7-8674-584ae5c717a9.png">
 
 ### Contact Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/contact
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829600/ba6cc7ba-1c29-11e7-9082-e70a1e3609de.png">
