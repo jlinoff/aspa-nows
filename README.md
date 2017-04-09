@@ -144,7 +144,7 @@ This screenshot shows the page after clicking Lorem on the File IO tab.
 #### 4. About Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/about
 This screenshot shows the page after clicking on the About tab.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833676/9f93fc04-1c85-11e7-81d6-c84922d15058.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833784/b2962a54-1c88-11e7-917a-f5c7796399ff.png">
 
 #### 6. Contact Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/contact
 This screenshot shows the page after clicking on the About tab.
