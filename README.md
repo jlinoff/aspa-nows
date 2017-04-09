@@ -48,6 +48,11 @@ myApp.config(function($routeProvider) {
             templateUrl : 'templates/home.html',
             controller  : 'homeCtrl'
         })
+        .when('/fileio', { // Note that the href is "#!/fileio"
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/fileio.html',
+            controller  : 'fileioCtrl'
+        })
         .when('/about', { // Note that the href is "#!/about"
             // This is not a real file when no web-server is present.
             templateUrl : 'templates/about.html',
