@@ -4,7 +4,7 @@ Angularjs 1.6.3 single page, client side only application with routing that does
 The repository name derives from **A**ngular **S**ingle **P**age client side only **A**pplication with **NO** **W**eb-**S**erver.
 
 This code shows how to create a client-side single page application (SPA) using angular.js v1.6.3 routing in a
-single page application without a server. 
+single page application without a server. It also shows how to do client side file uploads and downloads.
 
 I created it because I could not find an example that worked. All of the examples were great if you had
 a webserver (`http://`) but they failed with Cross Origin Resource String (CORS) errors if you tried to access them using `file://`.
@@ -15,6 +15,7 @@ Here is the HTML code fragment that shows how to define the `href` links.
 
 ```html
 <a href="#!/home"    class="navtab-inactive" ng-click="activate($event)">Home</a>
+<a href="#!/fileio"  class="navtab-inactive" ng-click="activate($event)">File IO</a>
 <a href="#!/about"   class="navtab-inactive" ng-click="activate($event)">About</a>
 <a href="#!/contact" class="navtab-inactive" ng-click="activate($event)">Contact</a>
 ```
@@ -85,7 +86,7 @@ Please note that this is not a good approach to use for general applications tha
 you cannot organize your template files. It is only useful for cases where no server is available. Perhaps
 where you want to provide HTML5 based help on a USB.
 
-There are 6 files.
+There are 7 files.
 
 | File | Description |
 | ---- | ----------- |
@@ -93,6 +94,7 @@ There are 6 files.
 | angular-route.js | 1.6.3 |
 | angular-sanitize.js | 1.6.3 |
 | app.js | local implementation |
+| button.css | my lame buttons |
 | index.html | main HTML5 page |
 | navbar.css | my lame navbar CSS |
 
@@ -106,18 +108,45 @@ This project has been tested successfully on the following browsers. It will def
 | Firefox | 52.0.2 (64-bit) |
 | Safari  | 12603.1.30.0.34 |
 
-### Welcome Page - file:///Users/jlinoff/work/aspa-nows/index.html
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829591/ac6bdcdc-1c29-11e7-9651-c7df1a606b7f.png">
+### Screenshots
+Here is a collection of screen shots that show how it works.
 
-### Welcome Page - http://localhost:8000
-This example shows the page with a server: `python -m SimpleHTTPServer 8000`.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829603/c4ca7cd4-1c29-11e7-9ff1-f212204286c6.png">
+#### 1. Welcome Page - file:///Users/jlinoff/work/aspa-nows/index.html
+This screenshot shows the welcome page (the first page that you see) as a client-side application.
 
-### Home Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/home
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829592/b2ad1782-1c29-11e7-9376-d83346ac3046.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833743/598d1fa4-1c87-11e7-9669-18255b52bc23.png">
 
-### About Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/about
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829760/d06743da-1c2c-11e7-8674-584ae5c717a9.png">
+### 1.1. Welcome Page - http://localhost:8000
+This screenshot shows the welcome page (the first page that you see) as a client/server application. The server was created by running `python -m SimpleHTTPServer 8000`. Note that the URL is `localhost:8000`.
 
-### Contact Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/contact
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24829600/ba6cc7ba-1c29-11e7-9082-e70a1e3609de.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833734/1dd433da-1c87-11e7-8e73-d2940b546146.png">
+
+#### 2. Home Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/home
+This screenshot shows the page after clicking the Home tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833673/9f7bcc42-1c85-11e7-8df5-57eaf7668384.png">
+
+#### 3. FileIO Page - file:///Users/jlinoff/work/aspa-nows/index.html#!fileio
+This screenshot shows the page after clicking the File IO tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833675/9f8030f2-1c85-11e7-970c-706d2f4a56ab.png">
+
+#### 3.1 FileIO Page - file:///Users/jlinoff/work/aspa-nows/index.html#!fileio
+This screenshot shows the page after clicking More on the File IO tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833677/9f9492e0-1c85-11e7-8f24-b748e18ffe3e.png">
+
+#### 3.2 FileIO Page - file:///Users/jlinoff/work/aspa-nows/index.html#!fileio
+This screenshot shows the page after clicking Lorem on the File IO tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833678/9f958b28-1c85-11e7-8ea4-4c89719b0ed3.png">
+
+#### 4. About Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/about
+This screenshot shows the page after clicking on the About tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833676/9f93fc04-1c85-11e7-81d6-c84922d15058.png">
+
+#### 6. Contact Page - file:///Users/jlinoff/work/aspa-nows/index.html#!/contact
+This screenshot shows the page after clicking on the About tab.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cloud.githubusercontent.com/assets/2991242/24833674/9f7c9bea-1c85-11e7-9018-1a245036bb2e.png">
