@@ -1,5 +1,6 @@
 // Copyright (c) 2017 by Joe Linoff
 // License: MIT Open Source
+// Project: https://github.com/jlinoff/aspa-nows
 
 // This app demonstrates how to create a single page application using
 // anulgarjs 1.6.3 routing without a webserver.
@@ -86,7 +87,8 @@ myApp.controller('aboutCtrl', function($scope) {
     // avalable.
     var dts = Date();
     var now = dts.toString();
-    $scope.message = "<p>It's about time <b><code>" + now + '</code></b>.</p><p>Version: 0.0.2</p>';
+    $scope.message = "<p>It's about time <b><code>" + now + '</code></b>.</p><p>Version: 0.0.3</p>';
+    $scope.message += '<p>Project: <a href="https://github.com/jlinoff/aspa-nows">https://github.com/jlinoff/aspa-nows</a></p>';
 });
 
 myApp.controller('contactCtrl', function($scope) {
