@@ -41,6 +41,11 @@ myApp.config(function($routeProvider) {
             templateUrl : 'templates/home.html',
             controller  : 'homeCtrl'
         })
+        .when('/fileio', { // Note that the href is "#!/fileio"
+            // This is not a real file when no web-server is present.
+            templateUrl : 'templates/fileio.html',
+            controller  : 'fileioCtrl'
+        })
         .when('/about', { // Note that the href is "#!/about"
             // This is not a real file when no web-server is present.
             templateUrl : 'templates/about.html',
@@ -81,7 +86,7 @@ myApp.controller('aboutCtrl', function($scope) {
     // avalable.
     var dts = Date();
     var now = dts.toString();
-    $scope.message = "<p>It's about time <b><code>" + now + '</code></b>.</p><p>Version: 0.0.1</p>';
+    $scope.message = "<p>It's about time <b><code>" + now + '</code></b>.</p><p>Version: 0.0.2</p>';
 });
 
 myApp.controller('contactCtrl', function($scope) {
@@ -96,6 +101,126 @@ myApp.controller('contactCtrl', function($scope) {
     Website  : <a href="https://example.com">https://example.com</a>
 </pre>`;
 });
+
+myApp.controller('fileioCtrl', ['$scope', '$document', function($scope, $document) {
+    // Function to clear the textarea element and the data.
+    $scope.clear = function(evt) {
+        var obj = $document[0].getElementById('fileio_content');
+        obj.value = '';
+
+        var obj1 = $document[0].getElementById('fileio_message');
+        obj1.innerHTML = '';
+    };
+
+    // Write sample text to the text area to download tests.
+    $scope.lorem = function(evt) {
+        $scope.clear();
+        var obj = $document[0].getElementById('fileio_content');
+        obj.value = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+`;
+    };
+
+    // Function to upload a file from the local disk using
+    // a file selection dialogue from the browser.
+    $scope.upload = function(evt) {
+        var files = evt.target.files;
+        var f = files[0];
+        // console.log('filename: ' + escape(f.name));
+        // console.log('size    : ' + f.size);
+        // console.log('date    : ' + f.lastModifiedDate.toLocaleDateString());
+        var reader = new FileReader();
+        reader.onload = (function(arg) {
+            return function(e) {
+                // This is the actual content!
+                // Yay! We can read local files.
+                //console.log(e.target.result);
+                var obj = $document[0].getElementById('fileio_content');
+                obj.value = e.target.result;
+                var obj1 = $document[0].getElementById('fileio_message');
+                obj1.innerHTML =
+                    '<pre>' +
+                    'uploaded file<br />' +
+                    '   name: ' + f.name + '<br />' +
+                    '   size: ' + f.size + '<br />' +
+                    '   date: ' + f.lastModifiedDate.toLocaleDateString() +
+                    '</pre>'
+                    ;
+            }
+        })(f);
+
+        try {
+            reader.readAsText(f);
+        } catch(err) {
+            $scope.clear();
+        }
+    };
+
+    // Function to download the content in the textarea.
+    // It cannot control whether a file save dialogue
+    // pops up. That is under the control of the browser.
+    $scope.download = function(evt) {
+        var path = $document[0].getElementById('fileio_download').value;
+        var content = $document[0].getElementById('fileio_content').value;
+        var pom = $document[0].createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+        pom.setAttribute('download', path);
+        pom.style.display = 'none';
+        $document[0].body.appendChild(pom);
+        pom.click();
+        $document[0].body.removeChild(pom);
+        
+        var obj1 = $document[0].getElementById('fileio_message');
+        var now = Date().toString();
+        obj1.innerHTML =
+            '<pre>' +
+            'downloaded file<br />' +
+            '   name: ' + path + '<br />' +
+            '   size: ' + content.length + '<br />' +
+            '   date: ' + now +
+            '</pre>'
+        ;
+    };
+
+    // Show more help.
+    $scope.show_more = function() {
+        var more = $document[0].getElementById('fileio_more');
+        var less = $document[0].getElementById('fileio_less');
+        more.style.display = 'inline';
+        less.style.display = 'none';
+    }
+
+    // Show less help.
+    $scope.show_less = function() {
+        var more = $document[0].getElementById('fileio_more');
+        var less = $document[0].getElementById('fileio_less');
+        more.style.display = 'none';
+        less.style.display = 'inline';
+    }
+
+    var obj = $document[0].getElementById('fileio_upload');
+    obj.addEventListener('change', $scope.upload, false);
+
+    var obj1 = $document[0].getElementById('fileio_clear');
+    obj1.addEventListener('click', $scope.clear, false);
+
+    var obj2 = $document[0].getElementById('fileio_download_button');
+    obj2.addEventListener('click', $scope.download, false);
+
+    var obj3 = $document[0].getElementById('fileio_lorem');
+    obj3.addEventListener('click', $scope.lorem, false);
+
+    var obj4 = $document[0].getElementById('fileio_more_button');
+    obj4.addEventListener('click', $scope.show_more, false);
+
+    var obj5 = $document[0].getElementById('fileio_less_button');
+    obj5.addEventListener('click', $scope.show_less, false);
+}]);
 
 myApp.controller('x404Ctrl', function($scope) {
     var navItems = document.getElementsByClassName('navtab-active');

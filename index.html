@@ -18,6 +18,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Ng Routing Demo</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="button.css">
     <link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="angular-route.js"></script>
@@ -28,11 +29,12 @@
       <nav ng-controller="navCtrl">
         <!-- The ! is required as of angular-1.6.3. -->
         <a href="#!/home"    class="navtab-inactive" ng-click="activate($event)">Home</a>
+        <a href="#!/fileio"  class="navtab-inactive" ng-click="activate($event)">File IO</a>
         <a href="#!/about"   class="navtab-inactive" ng-click="activate($event)">About</a>
         <a href="#!/contact" class="navtab-inactive" ng-click="activate($event)">Contact</a>
       </nav>
     </header>
-    
+
     <!-- Let the templates and controllers do everything. -->
     <ng-view></ng-view>
 
@@ -42,7 +44,7 @@
         This avoids the Cross Origin Resource String (CORS) errors that
         occur when accessing this installation using file://.
       -->
-    
+
     <!-- id must match templateUrl in $routeProvider. -->
     <script type="text/ng-template" id="templates/welcome.html">
       <div id="welcome_page">
@@ -99,6 +101,86 @@
         <h2>Contact</h2>
         <!-- Note: to inject HTML, you must have the $sanitize service avalable. -->
         <p ng-bind-html="message"></p>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="templates/fileio.html">
+      <div id="fileio_page">
+        <h2>File IO</h2>
+        <h3>Overview</h3>
+        <p>
+          This page demonstrates how local file reads and writes work
+          for client side only applications.
+        </p>
+        <div id="fileio_more" style="display: none;">
+          <label for="fileio_less_button" class="button">Less...</label>
+          <input type="button" id="fileio_less_button" style="display: none;" />
+          <p>
+            File IO for client size app[lications does not work
+            like file read/writes in native applications because of
+            browser security constraints. What that means in practice is
+            that your browser must support HTML5, ES6 (javascript) and
+            that you cannot create an arbitrary file on disk without a
+            file dialogue popup or an automatic download to a download
+            area. The browser preferences determine which approach is
+            taken.
+          </p>
+          <p>
+            Click the Upload button to upload a file. A file dialogue will
+            popup. Select a file from it and the file content will
+            then be displayed in the Text Area.
+          </p>
+          <p>
+            To download a file create it's content by uploading a file,
+            clicking on the Lorem button or entering text manually. Then
+            click the Download button. Your browser settings will
+            determine whether a file dialogue pops up. If you have not
+            specified a file dialogue, a file will be created in your
+            default downloads area.
+          </p>
+          <p>
+            The Clear button clears the text area and any
+            upload/download messages.
+          </p>
+          <p>
+            The Lorem button inserts some text into the text area for
+            download testing.
+          </p>
+        </div>
+        <div id="fileio_less" style="display: inline;">
+          <label for="fileio_more_button" class="button">More...</label>
+          <input type="button" id="fileio_more_button" style="display: none;" />
+        </div>
+        <hr>
+        <h3>Worksheet</h3>
+        <p>
+          <!--
+              Load a local file, workaround the CORS problem related
+              from the standalone input tag.
+            -->
+          <label for="fileio_upload" class="button">Upload</label>
+          <input type="file" id="fileio_upload" style="display: none;" />
+          <label><i>A file dialogue will pop up.</i></label>
+          <br />
+          <br />
+          <label for="fileio_download_button" class="button">Download</label>
+          <input type="button" id="fileio_download_button" style="display: none;" />
+          <input type="text" id="fileio_download" value="test.txt" style="font-size: 14px;">
+          <label><i>Your browser preferences determine whether a file save dialogue pops up.</i></label>
+        </p>
+        <code>Text Area Used for File Data</code><br />
+        <textarea id="fileio_content" rows="10" cols="80" style="white-space: pre; font-size: 11pt; font-family: courier, monospace;"></textarea>
+
+        <!-- could use a button here but want to have a consistent interface -->
+        <br />
+        <label for="fileio_clear" class="button">Clear</label>
+        <input type="button" id="fileio_clear" style="display: none;" />
+
+        <label for="fileio_lorem" class="button">Lorem</label>
+        <input type="button" id="fileio_lorem" style="display: none;" />
+
+        <!-- message -->
+        <div id="fileio_message" style="font-size: 11pt;"></div>
       </div>
     </script>
 
